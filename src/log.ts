@@ -157,4 +157,12 @@ export class Log {
   public static groupEnd() {
     return new Log().groupEnd();
   }
+
+  public clear() {
+    this._color = undefined;
+    this.messages = [];
+
+    return LogConfig.defaults(this._tag)(this);
+  }
+
 }
