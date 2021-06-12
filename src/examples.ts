@@ -54,6 +54,16 @@ Log.groupEnd();
 
 Log.info();
 
+const foo = () => 'Hello There!';
+const bar = (v: string) => v === 'Hello There!';
+
+const result = bar(Log.tap(foo(), (v) => Log.red('Tap').info(v)));
+bar(Log.red('Red').tap(foo()));
+
+Log.info(result.toString());
+
+Log.info();
+
 LogConfig.defaults((log) => log.ifDevelopment().blue('Dev Only'));
 
 Log.info('Global Default');

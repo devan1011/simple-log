@@ -46,6 +46,7 @@ Log.deepOrange('Deep Orange').info();
 ![image](https://user-images.githubusercontent.com/29194430/121779588-6846c980-cb94-11eb-9109-3b7b7f74462d.png)
 
 ### Chainable
+Fully chainable structure.
 ```js
 import { Log } from "simple-log-js";
 
@@ -63,6 +64,7 @@ Log.red('Red').space().green('Green').blue('Blue').info();
 ![image](https://user-images.githubusercontent.com/29194430/121779643-9fb57600-cb94-11eb-994d-42163228e141.png)
 
 ### Groups
+Support for console groups, while still maintaining chains and colors.
 ```js
 import { Log } from "simple-log-js";
 
@@ -82,8 +84,10 @@ Log.info('Manual Group');
 Log.groupEnd();
 ```
 ![image](https://user-images.githubusercontent.com/29194430/121779655-ab08a180-cb94-11eb-900c-d0918931965b.png)
-  
+
 ### Defaults
+Allows logs to be changed globally to avoid repeated calls in each use case. For example ifDevelopment, can be applied globally instead of being on every
+log.
 ```js
 import { Log } from "simple-log-js";
 
@@ -106,3 +110,24 @@ LogConfig.defaults('foobar', (log) => {
 Log.tag('foobar').info('Tag Default');
 ```
 ![image](https://user-images.githubusercontent.com/29194430/121779670-b78cfa00-cb94-11eb-81ce-070b4b1a14fb.png)
+
+### Taps
+Simple value wrapper that logs and returns input for easy logging of
+values in large chains or call stacks.
+```js
+import { Log } from "simple-log-js";
+
+const foo = () => 'Hello There!';
+const bar = (v: string) => v === 'Hello There!';
+
+/**
+ * Basic Taps
+ */
+bar(Log.tap(foo()));
+bar(Log.red('Tap').tap(foo()));
+
+/**
+ * With custom callback
+ */
+bar(Log.tap(foo(), (v) => Log.red('Tap').info(v)));
+```

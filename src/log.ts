@@ -192,4 +192,18 @@ export class Log {
   public static if(condition: LogCondition) {
     return new Log().if(condition);
   }
+
+  public tap<T>(value: T, tap?: (value: T) => void): T {
+    if (tap) {
+      tap(value);
+    } else {
+      this.info(value);
+    }
+
+    return value;
+  }
+
+  public static tap<T>(value: T, tap?: (value: T) => void): T {
+    return new Log().tap(value, tap);
+  }
 }
