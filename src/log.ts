@@ -132,5 +132,29 @@ export class Log {
     return new Log().text(...payload);
   }
 
+  public space() { return this.text(); }
   public static space() { return new Log().space(); }
+
+  public group(label?: unknown, callback?: (log: Log) => void) {
+    this.log('group', label);
+    
+    if (!this._abort && callback) {
+      callback(this);
+      this.log('groupEnd');
+    }
+
+    return this;
+  }
+
+  public groupEnd() {
+    return this.log('groupEnd');
+  }
+
+  public static group(name: unknown, callback?: (log: Log) => void) {
+    return new Log().group(name, callback);
+  }
+
+  public static groupEnd() {
+    return new Log().groupEnd();
+  }
 }
