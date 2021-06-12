@@ -100,7 +100,6 @@ export class Log {
   public lightGreen(...payload: unknown[]) { return this.color('#AED581', ...payload); }
   public lime(...payload: unknown[])       { return this.color('#D4E157', ...payload); }
   public yellow(...payload: unknown[])     { return this.color('#FDD835', ...payload); }
-  public amber(...payload: unknown[])      { return this.color('#FFD54F', ...payload); }
   public orange(...payload: unknown[])     { return this.color('#FFB74D', ...payload); }
   public deepOrange(...payload: unknown[]) { return this.color('#FF8A65', ...payload); }
 
@@ -117,7 +116,6 @@ export class Log {
   public static lightGreen(...payload: unknown[]) { return new Log().lightGreen(...payload); }
   public static lime(...payload: unknown[])       { return new Log().lime(...payload); }
   public static yellow(...payload: unknown[])     { return new Log().yellow(...payload); }
-  public static amber(...payload: unknown[])      { return new Log().amber(...payload); }
   public static orange(...payload: unknown[])     { return new Log().orange(...payload); }
   public static deepOrange(...payload: unknown[]) { return new Log().deepOrange(...payload); }
 
