@@ -11,7 +11,7 @@ export interface LogMessage {
 export class Log {
   private _tag: string;
   private _color: string | undefined = undefined;
-  
+
   private messages: LogMessage[] = [];
 
   private _abort = false;
@@ -29,13 +29,13 @@ export class Log {
   public log(method: LogMethod, ...payload: unknown[]) {
     if (this._abort) return this;
 
-      console[method](...compileMessages([
-        ...this.messages,
-        {
-          color: this._color,
-          payload,
-        }
-      ]));
+    console[method](...compileMessages([
+      ...this.messages,
+      {
+        color: this._color,
+        payload,
+      }
+    ]));
 
     return this;
   }
@@ -74,7 +74,7 @@ export class Log {
     if (!payload.length) {
       this._color = color;
     }
-    
+
     this.messages.push({
       color,
       payload,
@@ -137,7 +137,7 @@ export class Log {
 
   public group(label?: unknown, callback?: (log: Log) => void) {
     this.log('group', label);
-    
+
     if (!this._abort && callback) {
       callback(this);
       this.log('groupEnd');
@@ -165,4 +165,31 @@ export class Log {
     return LogConfig.defaults(this._tag)(this);
   }
 
+  public if(condition: LogCondition, override: boolean = false) {
+    if (!override && this._abort) return this;
+
+    if (condition instanceof Function) {
+      this._abort = !condition();
+    } else {
+      this._abort = !condition;
+    }
+
+    return this;
+  }
+
+  public ifProduction() {
+    return this.if(LogConfig.environment === 'production');
+  }
+
+  public ifStaging() {
+    return this.if(LogConfig.environment === 'staging');
+  }
+
+  public ifDevelopment() {
+    return this.if(LogConfig.environment === 'development');
+  }
+
+  public static if(condition: LogCondition) {
+    return new Log().if(condition);
+  }
 }
