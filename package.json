@@ -2,8 +2,9 @@
   "name": "@devanjs/log",
   "version": "1.0.2",
   "description": "Simple browser logger",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --respawn src/index.ts",
     "start": "webpack serve --open --host 0.0.0.0 --port 4080",
     "test": "mocha --require ts-node/register test/**/*.spec.ts"
