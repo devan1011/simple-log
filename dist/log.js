@@ -147,5 +147,17 @@ class Log {
     static if(condition) {
         return new Log().if(condition);
     }
+    tap(value, tap) {
+        if (tap) {
+            tap(value);
+        }
+        else {
+            this.info(value);
+        }
+        return value;
+    }
+    static tap(value, tap) {
+        return new Log().tap(value, tap);
+    }
 }
 exports.Log = Log;

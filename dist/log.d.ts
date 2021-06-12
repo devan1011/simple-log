@@ -65,4 +65,6 @@ export declare class Log {
     ifStaging(): this;
     ifDevelopment(): this;
     static if(condition: LogCondition): Log;
+    tap<T>(value: T, tap?: (value: T) => void): T;
+    static tap<T>(value: T, tap?: (value: T) => void): T;
 }

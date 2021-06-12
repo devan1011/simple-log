@@ -40,6 +40,12 @@ _1.Log.blue('Blue').group('Group');
 _1.Log.info('Manual Group');
 _1.Log.groupEnd();
 _1.Log.info();
+const foo = () => 'Hello There!';
+const bar = (v) => v === 'Hello There!';
+const result = bar(_1.Log.tap(foo(), (v) => _1.Log.red('Tap').info(v)));
+bar(_1.Log.red('Red').tap(foo()));
+_1.Log.info(result.toString());
+_1.Log.info();
 _1.LogConfig.defaults((log) => log.ifDevelopment().blue('Dev Only'));
 _1.Log.info('Global Default');
 _1.LogConfig.defaults('foobar', (log) => {
