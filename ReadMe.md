@@ -3,7 +3,7 @@ Simple to use chainable browser logger, with some extra handy utilities.
 
 ## Installation
 ```sh
-$ npm i --save simple-logs-js
+$ npm i --save @devanjs/simple-log-js
 ```
 
 ## Usage
