@@ -119,6 +119,18 @@ export class Log {
   public static orange(...payload: unknown[])     { return new Log().orange(...payload); }
   public static deepOrange(...payload: unknown[]) { return new Log().deepOrange(...payload); }
 
-  public space() { return this.color('#fff0'); }
+  public text(...payload: unknown[]) {
+    this.messages.push({
+      color: undefined,
+      payload,
+    });
+
+    return this;
+  }
+
+  public static text(...payload: unknown[]) {
+    return new Log().text(...payload);
+  }
+
   public static space() { return new Log().space(); }
 }
