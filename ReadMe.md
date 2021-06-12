@@ -1,4 +1,6 @@
 # Simple Log Js
+![npm package](https://img.shields.io/npm/v/@devanjs/log)
+
 Simple to use chainable browser logger, with some extra handy utilities.
 
 ## Installation
