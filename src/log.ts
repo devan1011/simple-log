@@ -1,24 +1,34 @@
 import { compileMessages } from "./utils";
+import { LogConfig } from "./logConfig";
 
 export type LogCondition = boolean | (() => boolean);
 export type LogMethod = 'info'|'warn'|'error'|'group'|'groupEnd';
 export interface LogMessage {
+  color: string | undefined;
   payload: unknown[];
-  color: string;
 }
 
 export class Log {
-  private _name:  string | undefined = undefined;
-  private _color: string = '#fff0';
+  private _tag: string;
+  private _color: string | undefined = undefined;
   
   private messages: LogMessage[] = [];
-  private conditions: LogCondition[] = [];
+
+  private _abort = false;
+
+  constructor(tag?: string) {
+    this._tag = tag || '*';
+
+    return LogConfig.defaults(this._tag)(this);
+  }
+
+  public static tag(tag: string) {
+    return new Log(tag);
+  }
 
   public log(method: LogMethod, ...payload: unknown[]) {
-    if (this
-      .conditions
-      .every(c => c instanceof Function ? c() : c)
-    ) {
+    if (this._abort) return this;
+
       console[method](...compileMessages([
         ...this.messages,
         {
@@ -26,7 +36,6 @@ export class Log {
           payload,
         }
       ]));
-    }
 
     return this;
   }
