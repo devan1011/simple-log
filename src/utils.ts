@@ -1,4 +1,5 @@
 import type { LogMessage } from "./log";
+import { LogConfig } from "./logConfig";
 
 export function compileMessages(messages: LogMessage[]) {
   let content: string = '';
@@ -6,25 +7,12 @@ export function compileMessages(messages: LogMessage[]) {
 
   messages
     .forEach((message, index) => {
-      const prevColor = messages[index - 1]?.color || '#fff0';
-      const nextColor = messages[index + 1]?.color || '#fff0';
+      const next = messages[index + 1];
+      const prev = messages[index - 1];
 
-      const hasColor = message.color !== '#fff0';
-      const hasContent = message.payload.length > 0;
+      const style = LogConfig.getCss(message, next, prev);
 
-      const style = `
-        ${!hasColor ? '' : 'text-shadow: 0px 0px 6px #0004;'}
-        padding: 2px ${hasContent ? '6px' : '0px'};
-        margin: -1px 0 0 0;
-        border-top-left-radius: ${prevColor === '#fff0' ? '4px' : '0'};
-        border-bottom-left-radius: ${prevColor === '#fff0' ? '4px' : '0'};
-        border-top-right-radius: ${nextColor === '#fff0' ? '4px' : '0'};
-        border-bottom-right-radius: ${nextColor === '#fff0' ? '4px' : '0'};
-        color: ${hasColor ? '#fff' : '#222'};
-        background-color: ${message.color};
-      `;
-
-      if (!hasContent) {
+      if (!message.payload.length) {
         content += '%c ';
         parts.push(style);
       }
