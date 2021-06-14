@@ -13,7 +13,7 @@ $ npm i --save @devanjs/log
 ## Usage
 ### Basic
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 Log.info('Standard Console.info');
 Log.warn('Standard Console.warn');
@@ -24,7 +24,7 @@ Log.error('Standard Console.error');
 
 ### Colors
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 Log.red('Red').info();
 Log.pink('Pink').info();
@@ -48,7 +48,7 @@ Log.deepOrange('Deep Orange').info();
 ### Chainable
 Fully chainable structure.
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 /**
  * All methods are chainable, with each chain ending in:
@@ -66,7 +66,7 @@ Log.red('Red').space().green('Green').blue('Blue').info();
 ### Groups
 Support for console groups, while still maintaining chains and colors.
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 /**
  * Automatic grouping using callback contents.
@@ -89,7 +89,7 @@ Log.groupEnd();
 Allows logs to be changed globally to avoid repeated calls in each use case. For example ifDevelopment, can be applied globally instead of being on every
 log.
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 /**
  * Global defaults to apply to all non tagged logs.
@@ -115,7 +115,7 @@ Log.tag('foobar').info('Tag Default');
 Simple value wrapper that logs and returns input for easy logging of
 values in large chains or call stacks.
 ```js
-import { Log } from "simple-log-js";
+import { Log } from "@devanjs/log";
 
 const foo = () => 'Hello There!';
 const bar = (v: string) => v === 'Hello There!';
