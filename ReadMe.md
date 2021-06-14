@@ -99,7 +99,7 @@ LogConfig.defaults((log) => log.ifDevelopment().blue('Dev Only'));
 Log.info('Global Default');
 
 /**
- * Global defaults to apply to all tagged logs with same name.
+ * Tag defaults to apply to all tagged logs with same name.
  */
 LogConfig.defaults('foobar', (log) => {
   return log
@@ -107,6 +107,9 @@ LogConfig.defaults('foobar', (log) => {
     .red('Foobar');
 });
 
+/**
+ * Tagged logs will not get global defaults applied.
+ */
 Log.tag('foobar').info('Tag Default');
 ```
 ![image](https://user-images.githubusercontent.com/29194430/121779670-b78cfa00-cb94-11eb-81ce-070b4b1a14fb.png)
