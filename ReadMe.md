@@ -2,7 +2,7 @@
 <a href="https://www.npmjs.com/package/@devanjs/log">
   <img src="https://img.shields.io/npm/v/@devanjs/log">
 <a>
-  
+
 Simple to use chainable browser logger, with some extra handy utilities.
 
 ## Installation
@@ -130,4 +130,21 @@ bar(Log.red('Tap').tap(foo()));
  * With custom callback
  */
 bar(Log.tap(foo(), (v) => Log.red('Tap').info(v)));
+```
+
+## Contributing
+Uses UID and GID to avoid permissions issues
+```
+$ export UID
+$ export GID
+```
+
+Npm
+```
+$ docker-compose run node npm <command>
+```
+
+Dev Server
+```
+$ docker-compose up
 ```
