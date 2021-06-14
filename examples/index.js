@@ -1,4 +1,4 @@
-import { Log, LogConfig } from './';
+import { Log, LogConfig } from "../src";
 
 Log.teal('Simple').lime('log').info();
 
@@ -55,7 +55,7 @@ Log.groupEnd();
 Log.info();
 
 const foo = () => 'Hello There!';
-const bar = (v: string) => v === 'Hello There!';
+const bar = (v) => v === 'Hello There!';
 
 const result = bar(Log.tap(foo(), (v) => Log.red('Tap').info(v)));
 bar(Log.red('Red').tap(foo()));
