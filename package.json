@@ -4,9 +4,9 @@
   "description": "Simple browser logger",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node-dev --respawn src/index.ts",
-    "start": "webpack serve --open --host 0.0.0.0 --port 4080",
+    "compile": "tsc",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js",
     "test": "mocha --require ts-node/register test/**/*.spec.ts"
   },
   "author": "danevans485@gmail.com",
