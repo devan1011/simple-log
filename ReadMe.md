@@ -1,9 +1,9 @@
-# Simple Log Js
+# Browser Logging Tool
 
 [![NPM Package](https://img.shields.io/npm/v/@devanjs/log)](https://www.npmjs.com/package/@devanjs/log)
 [![Package Size](https://img.shields.io/github/size/devan1011/simple-log/dist/index.js)](https://bundlephobia.com/package/@devanjs/log)
 
-Simple to use chainable browser logger, with some extra handy utilities.
+Zero dependancy, simple to use, and chainable browser logger, with some extra handy utilities.
 
 ## Installation
 ```sh
