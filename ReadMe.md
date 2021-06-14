@@ -1,4 +1,5 @@
 # Browser Logging Tool
+Browser logging, probably done wrong ¯\_(ツ)_/¯
 
 [![NPM Package](https://img.shields.io/npm/v/@devanjs/log)](https://www.npmjs.com/package/@devanjs/log)
 [![Package Size](https://img.shields.io/github/size/devan1011/simple-log/dist/index.js)](https://bundlephobia.com/package/@devanjs/log)
