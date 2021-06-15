@@ -19,8 +19,9 @@ export class LogConfig {
     prev:    LogMessage | undefined,
   ) => `
     ${current.color ? 'text-shadow: 0px 1px 1px #0004, 0px 2px 8px #0002;' : ''}
-    padding: 2px ${current.payload.length ? '6px' : '0px'};
-    margin: -1px 0 0 0;
+    padding: 1px ${current.payload.length ? '6px' : '0px'};
+    font-size: 12px;
+    line-height: 16px;
     border-top-left-radius: ${prev?.color ? '0' : '4px'};
     border-bottom-left-radius: ${prev?.color ? '0' : '4px'};
     border-top-right-radius: ${next?.color ? '0' : '4px'};
@@ -28,7 +29,7 @@ export class LogConfig {
     color: ${current.color ? '#fff' : '#222'};
     background-color: ${current.color};
   `;
-  
+
   public static css(callback: LogCss) {
     this._css = callback;
   }
