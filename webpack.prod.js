@@ -9,6 +9,7 @@ module.exports = merge(common, {
   optimization: {
     mangleExports: 'size',
     minimize: true,
+    usedExports: false,
   },
   output: {
     filename: 'index.js',
