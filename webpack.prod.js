@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
+  target: 'es5',
   mode: 'production',
   entry: './index.ts',
   context: path.resolve(__dirname, 'src'),
