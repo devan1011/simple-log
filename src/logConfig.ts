@@ -26,7 +26,7 @@ export class LogConfig {
     border-bottom-left-radius: ${prev?.color ? '0' : '4px'};
     border-top-right-radius: ${next?.color ? '0' : '4px'};
     border-bottom-right-radius: ${next?.color ? '0' : '4px'};
-    color: ${current.color ? '#fff' : '#222'};
+    color: ${current.color ? '#fff' : 'inherit'};
     background-color: ${current.color};
   `;
 
